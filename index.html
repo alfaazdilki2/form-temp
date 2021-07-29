@@ -1,0 +1,24 @@
+<html>
+<head></head>
+<body>
+<div id="addnew">
+    <input type="text" id="id">
+    <input type="text" id="content">
+    <input type="button" value="Add" id="submit">
+</div>
+</body>
+<script>
+var submit = document.getElementById("submit");
+submit.onclick = function () {
+    var id      = document.getElementById("id").value;
+    var content = document.getElementById("content").value;
+    writeToFile(id, content);
+}
+function writeToFile(d1, d2){
+    var fso = new ActiveXObject("Scripting.FileSystemObject");
+    var fh = fso.OpenTextFile("data.txt", 8, false, 0);
+    fh.WriteLine(d1 + ',' + d2);
+    fh.Close();
+}
+</script>
+</html>
